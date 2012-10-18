@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Aurmil_ForceStoreCode>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Aurmil_ForceStoreCode>
+    </modules>
+</config>
