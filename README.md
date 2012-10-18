@@ -1,0 +1,1 @@
+<h1>Magento - Force Store Code extension</h1>
