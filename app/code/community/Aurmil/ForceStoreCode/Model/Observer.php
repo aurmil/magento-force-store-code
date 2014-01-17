@@ -27,6 +27,13 @@ class Aurmil_ForceStoreCode_Model_Observer
             {
                 $url = $store->getWebsite()->getDefaultStore()->getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK, $store->isCurrentlySecure());
 
+                // add GET params
+                $query = $request->getQuery();
+                if (!empty($query))
+                {
+                    $url .= substr($request->getRequestUri(), strpos($request->getRequestUri(), '?'));
+                }
+
                 $response = $front->getResponse();
                 $response->setRedirect($url, 301);
                 $response->sendHeaders();
