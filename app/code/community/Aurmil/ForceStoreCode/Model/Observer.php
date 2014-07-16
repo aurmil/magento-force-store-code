@@ -7,31 +7,34 @@ class Aurmil_ForceStoreCode_Model_Observer
         /* @var $front Mage_Core_Controller_Varien_Front */
         $front = $observer->getFront();
         $request = $front->getRequest();
+        $store = Mage::app()->getStore();
 
-        // for root only because internal links automatically add store code if needed
+        // for root only because internal links automatically include store code if needed
         if (Mage::getStoreConfigFlag(Mage_Core_Model_Store::XML_PATH_STORE_IN_URL)
             && Mage::getStoreConfigFlag('web/url/force_store')
+            && !$store->isAdmin()
             && !class_exists('Maged_Controller', false)
-            && ('/' == $request->getOriginalPathInfo()))
-        {
+            && ('/' == $request->getOriginalPathInfo())
+        ) {
             $requestUri = $request->getRequestUri();
-            if (false !== strpos($requestUri, '?'))
-            {
+            if (false !== strpos($requestUri, '?')) {
                 $requestUri = substr($requestUri, 0, strpos($requestUri, '?'));
             }
 
-            $store = Mage::app()->getStore();
+            $expectedUri = $request->getBaseUrl() . '/' . $store->getCode() . '/';
 
             // if different, means store code is not in URI
-            if ($request->getBaseUrl() . '/' . $store->getCode() . '/' != $requestUri)
-            {
-                $url = $store->getWebsite()->getDefaultStore()->getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK, $store->isCurrentlySecure());
+            if ($expectedUri != $requestUri) {
+                $url = $store->getWebsite()->getDefaultStore()->getBaseUrl(
+                    Mage_Core_Model_Store::URL_TYPE_LINK, 
+                    $store->isCurrentlySecure()
+                );
 
                 // add GET params
                 $query = $request->getQuery();
-                if (!empty($query))
-                {
-                    $url .= substr($request->getRequestUri(), strpos($request->getRequestUri(), '?'));
+                if (!empty($query)) {
+                    $requestUri = $request->getRequestUri();
+                    $url .= substr($requestUri, strpos($requestUri, '?'));
                 }
 
                 $response = $front->getResponse();
