@@ -10,11 +10,11 @@ class Aurmil_ForceStoreCode_Model_Observer
         $store = Mage::app()->getStore();
 
         // for root only because internal links automatically include store code if needed
-        if (Mage::getStoreConfigFlag(Mage_Core_Model_Store::XML_PATH_STORE_IN_URL)
+        if (('/' == $request->getOriginalPathInfo())
+            && Mage::getStoreConfigFlag(Mage_Core_Model_Store::XML_PATH_STORE_IN_URL)
             && Mage::getStoreConfigFlag('web/url/force_store')
             && !$store->isAdmin()
             && !class_exists('Maged_Controller', false)
-            && ('/' == $request->getOriginalPathInfo())
         ) {
             $requestUri = $request->getRequestUri();
             if (false !== strpos($requestUri, '?')) {

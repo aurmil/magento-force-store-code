@@ -18,7 +18,7 @@ Tested on Magento CE 1.6 - 1.9
 ## Installation
 Just download the "app" folder and paste it into the root directory of your Magento application. It will be merged with the existing "app" folder.
 
-No Magento files will be modified or extended/overridden.
+No Magento files will be modified, no extended class, no overridden method.
 
 ## Usage
 In __System > Configuration > General > Web > Url Options__, this extension adds a new option: __Force Store Code in Urls__
