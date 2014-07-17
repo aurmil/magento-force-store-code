@@ -31,6 +31,9 @@ In __System > Configuration > General > Web > Url Options__, this extension adds
 Note: HTTP redirection may be cached by your browser if you had previously activated the extension so clean your cache after selecting "No" if redirection keeps being done.
 
 ## Changelog
+### 1.2
+* Display option only when "Add store code to URLs" is set to "Yes".
+
 ### 1.1
 * minor changes (code, lines length, comments, readme)
 
