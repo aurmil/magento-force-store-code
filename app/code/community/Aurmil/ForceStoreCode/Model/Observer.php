@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @author     Aurélien Millet
+ * @link       https://github.com/aurmil/
+ */
+
 class Aurmil_ForceStoreCode_Model_Observer
 {
     public function forceStoreCode($observer)
@@ -26,7 +31,7 @@ class Aurmil_ForceStoreCode_Model_Observer
             // if different, means store code is not in URI
             if ($expectedUri != $requestUri) {
                 $url = $store->getWebsite()->getDefaultStore()->getBaseUrl(
-                    Mage_Core_Model_Store::URL_TYPE_LINK, 
+                    Mage_Core_Model_Store::URL_TYPE_LINK,
                     $store->isCurrentlySecure()
                 );
 
