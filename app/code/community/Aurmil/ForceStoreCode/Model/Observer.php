@@ -26,7 +26,7 @@ class Aurmil_ForceStoreCode_Model_Observer
                 $requestUri = substr($requestUri, 0, strpos($requestUri, '?'));
             }
 
-            $expectedUri = $request->getBaseUrl().'/'.$store->getCode().'/';
+            $expectedUri = $request->getBaseUrl() . '/' . $store->getCode() . '/';
 
             // if different, means store code is not in URI
             if ($expectedUri != $requestUri) {
