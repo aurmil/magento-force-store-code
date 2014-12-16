@@ -32,6 +32,30 @@ No Magento files will be modified, no extended class, no overridden method.
 
 * ```$ modman clone git@github.com:aurmil/magento-force-store-code.git```
 
+### With composer
+
+* Adapt the following "composer.json" file into yours:
+
+```
+{
+	"require": {
+		"aurmil/magento-force-store-code": "dev-master"
+	},
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "http://packages.firegento.com"
+        },
+        {
+            "type": "vcs",
+            "url": "git://github.com/aurmil/magento-force-store-code"
+        }
+    ],
+	"extra": {
+		"magento-root-dir": "./"
+	}
+}```
+
 ## Usage
 
 In __System > Configuration > General > Web > Url Options__, this extension adds a new option: __Force Store Code in Urls__
