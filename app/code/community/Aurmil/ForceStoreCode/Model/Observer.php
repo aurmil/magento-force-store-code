@@ -4,7 +4,6 @@
  * @author     Aurélien Millet
  * @link       https://github.com/aurmil/
  */
-
 class Aurmil_ForceStoreCode_Model_Observer
 {
     public function forceStoreCode($observer)
