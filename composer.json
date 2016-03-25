@@ -1,9 +1,7 @@
 {
     "name": "aurmil/magento-force-store-code",
-    "description": "Magento - Force Store Code extension",
-    "type": "magento-module",
-    "keywords": ["seo"],
-    "homepage": "https://github.com/aurmil/magento-force-store-code",
+    "description": "Magento - Force store code extension",
+    "keywords": ["magento", "seo"],
     "authors": [
         {
             "name": "Aurélien Millet",
@@ -11,6 +9,8 @@
             "role": "Developer"
         }
     ],
+    "homepage": "https://github.com/aurmil/magento-force-store-code",
+    "type": "magento-module",
     "require": {
         "magento-hackathon/magento-composer-installer": "*"
     }
