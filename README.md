@@ -1,4 +1,4 @@
-# Magento - Force Store Code extension
+# Magento - Force store code extension
 
 ## Overview
 
@@ -22,15 +22,15 @@ Tested on Magento CE 1.6 - 1.9
 
 No Magento files will be modified, no extended class, no overridden method.
 
+### With modman
+
+* ```$ modman clone git@github.com:aurmil/magento-force-store-code.git```
+
 ### Manually
 
 * Download the latest version of this module [here](https://github.com/aurmil/magento-force-store-code/archive/master.zip)
 * Unzip it
 * Move the "app" folder into the root directory of your Magento application, it will be merged with the existing "app" folder
-
-### With modman
-
-* ```$ modman clone git@github.com:aurmil/magento-force-store-code.git```
 
 ### With composer
 
@@ -38,9 +38,9 @@ No Magento files will be modified, no extended class, no overridden method.
 
 ```
 {
-	"require": {
-		"aurmil/magento-force-store-code": "dev-master"
-	},
+    "require": {
+        "aurmil/magento-force-store-code": "dev-master"
+    },
     "repositories": [
         {
             "type": "composer",
@@ -51,9 +51,9 @@ No Magento files will be modified, no extended class, no overridden method.
             "url": "git://github.com/aurmil/magento-force-store-code"
         }
     ],
-	"extra": {
-		"magento-root-dir": "./"
-	}
+    "extra": {
+        "magento-root-dir": "./"
+    }
 }
 ```
 
