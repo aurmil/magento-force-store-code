@@ -83,3 +83,7 @@ Note: HTTP redirection may be cached by your browser if you had previously activ
 ### 1.0
 
 * initial release
+
+## License
+
+The MIT License (MIT). Please see [License File](https://github.com/aurmil/magento-force-store-code/blob/master/LICENSE.md) for more information.

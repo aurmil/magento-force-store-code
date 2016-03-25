@@ -1,4 +1,11 @@
 <?xml version="1.0"?>
+<!--
+/**
+ * @author Aurélien Millet
+ * @link https://github.com/aurmil/magento-force-store-code
+ * @license https://github.com/aurmil/magento-force-store-code/blob/master/LICENSE.md
+ */
+-->
 <config>
     <modules>
         <Aurmil_ForceStoreCode>
