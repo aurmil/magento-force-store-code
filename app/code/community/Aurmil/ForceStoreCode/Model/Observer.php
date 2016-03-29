@@ -7,23 +7,36 @@
 
 class Aurmil_ForceStoreCode_Model_Observer
 {
+    const XML_PATH_FORCE_STORE_IN_URL = 'web/url/force_store';
+
+    /**
+     * Event "controller_front_init_before"
+     *
+     * @event controller_front_init_before
+     * @param Varien_Event_Observer $observer
+     * @return Aurmil_ForceStoreCode_Model_Observer
+     */
     public function forceStoreCode($observer)
     {
         /* @var $front Mage_Core_Controller_Varien_Front */
-        $front = $observer->getFront();
+        $front = $observer->getEvent()->getFront();
         $request = $front->getRequest();
         $store = Mage::app()->getStore();
 
         // for root only because internal links automatically include store code if needed
         if (('/' == $request->getOriginalPathInfo())
             && Mage::getStoreConfigFlag(Mage_Core_Model_Store::XML_PATH_STORE_IN_URL)
-            && Mage::getStoreConfigFlag('web/url/force_store')
+            && Mage::getStoreConfigFlag(self::XML_PATH_FORCE_STORE_IN_URL)
             && !$store->isAdmin()
             && !class_exists('Maged_Controller', false)
         ) {
             $requestUri = $request->getRequestUri();
+            $query = '';
+
             if (false !== strpos($requestUri, '?')) {
-                $requestUri = substr($requestUri, 0, strpos($requestUri, '?'));
+                $requestUri = explode('?', $requestUri);
+                $query = '?'.$requestUri[1];
+                $requestUri = $requestUri[0];
             }
 
             $expectedUri = $request->getBaseUrl() . '/' . $store->getCode() . '/';
@@ -34,19 +47,15 @@ class Aurmil_ForceStoreCode_Model_Observer
                     Mage_Core_Model_Store::URL_TYPE_LINK,
                     $store->isCurrentlySecure()
                 );
+                $url .= $query; // add GET params
 
-                // add GET params
-                $query = $request->getQuery();
-                if (!empty($query)) {
-                    $requestUri = $request->getRequestUri();
-                    $url .= substr($requestUri, strpos($requestUri, '?'));
-                }
-
-                $response = $front->getResponse();
-                $response->setRedirect($url, 301);
-                $response->sendHeaders();
+                $front->getResponse()
+                    ->setRedirect($url, 301)
+                    ->sendHeaders(); // sendHeadersAndExit() appeared in 1.9
                 exit;
             }
         }
+
+        return $this;
     }
 }

@@ -18,13 +18,18 @@
                 <class>Aurmil_ForceStoreCode_Helper</class>
             </aurmil_forcestorecode>
         </helpers>
+        <models>
+            <aurmil_forcestorecode>
+                <class>Aurmil_ForceStoreCode_Model</class>
+            </aurmil_forcestorecode>
+        </models>
         <events>
             <controller_front_init_before>
                 <observers>
-                    <force_store_code>
-                        <class>Aurmil_ForceStoreCode_Model_Observer</class>
+                    <forcestorecode_controller_front_init_before>
+                        <class>aurmil_forcestorecode/observer</class>
                         <method>forceStoreCode</method>
-                    </force_store_code>
+                    </forcestorecode_controller_front_init_before>
                 </observers>
             </controller_front_init_before>
         </events>
