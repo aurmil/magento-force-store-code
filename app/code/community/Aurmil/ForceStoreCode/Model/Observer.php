@@ -7,8 +7,6 @@
 
 class Aurmil_ForceStoreCode_Model_Observer
 {
-    const XML_PATH_FORCE_STORE_IN_URL = 'web/url/force_store';
-
     /**
      * Event "controller_front_init_before"
      *
@@ -24,9 +22,9 @@ class Aurmil_ForceStoreCode_Model_Observer
         $store = Mage::app()->getStore();
 
         // for root only because internal links automatically include store code if needed
-        if (('/' == $request->getOriginalPathInfo())
-            && Mage::getStoreConfigFlag(Mage_Core_Model_Store::XML_PATH_STORE_IN_URL)
-            && Mage::getStoreConfigFlag(self::XML_PATH_FORCE_STORE_IN_URL)
+        if ('/' === $request->getOriginalPathInfo()
+            && $store->getStoreInUrl()
+            && Mage::helper('aurmil_forcestorecode')->isEnabled()
             && !$store->isAdmin()
             && !class_exists('Maged_Controller', false)
         ) {
@@ -47,12 +45,13 @@ class Aurmil_ForceStoreCode_Model_Observer
                     Mage_Core_Model_Store::URL_TYPE_LINK,
                     $store->isCurrentlySecure()
                 );
-                $url .= $query; // add GET params
+
+                // add GET params
+                $url .= $query;
 
                 $front->getResponse()
                     ->setRedirect($url, 301)
-                    ->sendHeaders(); // sendHeadersAndExit() appeared in 1.9
-                exit;
+                    ->sendHeadersAndExit();
             }
         }
 

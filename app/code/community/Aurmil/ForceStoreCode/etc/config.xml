@@ -9,7 +9,7 @@
 <config>
     <modules>
         <Aurmil_ForceStoreCode>
-            <version>1.3.1</version>
+            <version>1.4.0</version>
         </Aurmil_ForceStoreCode>
     </modules>
     <global>
@@ -26,10 +26,10 @@
         <events>
             <controller_front_init_before>
                 <observers>
-                    <forcestorecode_controller_front_init_before>
+                    <forcestorecode_force_store_code>
                         <class>aurmil_forcestorecode/observer</class>
                         <method>forceStoreCode</method>
-                    </forcestorecode_controller_front_init_before>
+                    </forcestorecode_force_store_code>
                 </observers>
             </controller_front_init_before>
         </events>
