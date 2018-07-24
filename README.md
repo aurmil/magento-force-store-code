@@ -63,7 +63,7 @@ No Magento files will be modified, no extended class, no overridden method.
 
 In __System > Configuration > General > Web > Url Options__, this extension adds a new option: __Force Store Code in Urls__
 
-![](http://2.bp.blogspot.com/-8tgBLWnMPTQ/UG2KY6QwwnI/AAAAAAAALKc/_mUbwp1CRf0/s1600/force-store-code.png)
+![](docs/images/force-store-code-config.png)
 
 * Select "No" to stay with the Magento basic behavior
 * Select "Yes" (default value) to activate the extension
